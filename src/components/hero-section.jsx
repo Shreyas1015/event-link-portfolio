@@ -93,10 +93,10 @@ export function HeroSection() {
     <section
       id="home"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
     >
       <canvas ref={canvasRef} className="absolute inset-0" />
-      <div className="relative z-10 text-center px-10">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -104,30 +104,40 @@ export function HeroSection() {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white"
           >
             Transforming College Event Management
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-2xl md:text-3xl mb-12"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 text-white"
           >
             One Platform, Endless Possibilities.
           </motion.p>
           <motion.div
             variants={itemVariants}
-            className="flex justify-center space-x-4"
+            className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
           >
             <Button
               size="lg"
-              className="bg-[#3498db] hover:bg-[#3498db] text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105"
+              className="bg-[#2980b9] hover:bg-[#3498db] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              onClick={() => {
+                document
+                  .getElementById("features")
+                  .scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Explore Features
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-[#3498db]"
+              className="bg-transparent border-2 border-white text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-[#2980b9] text-sm sm:text-base"
+              onClick={() => {
+                document
+                  .getElementById("demo")
+                  .scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Watch Demo
             </Button>
@@ -145,11 +155,11 @@ export function HeroSection() {
           ease: "easeInOut",
         }}
       >
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+        <div className="w-4 h-8 sm:w-6 sm:h-10 border-2 border-white rounded-full flex justify-center">
           <motion.div
-            className="w-1 h-3 bg-white rounded-full"
+            className="w-1 h-2 sm:h-3 bg-white rounded-full"
             animate={{
-              y: [0, 15, 0],
+              y: [0, 10, 0],
             }}
             transition={{
               duration: 1.5,

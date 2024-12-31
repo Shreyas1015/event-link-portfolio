@@ -62,21 +62,21 @@ export function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="min-h-screen py-80 overflow-hidden "
+      className="py-16 sm:py-20 overflow-hidden bg-white"
     >
-      <div className="container mx-auto px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-black">
               Transforming Event Discovery for Students and Colleges
             </h2>
             <motion.p
-              className="text-xl text-gray-300 mb-8"
+              className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
@@ -85,7 +85,7 @@ export function AboutSection() {
               providing a single hub for all college events, ensuring maximum
               visibility and engagement.
             </motion.p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {keyPoints.map((point, index) => (
                 <motion.div
                   key={point.title}
@@ -95,33 +95,110 @@ export function AboutSection() {
                   viewport={{ once: true }}
                   className="flex items-start space-x-3"
                 >
-                  <point.icon className="w-6 h-6 text-[#3498db]" />
+                  <point.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#2980b9] flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-white">{point.title}</h3>
-                    <p className="text-sm text-gray-400">{point.description}</p>
+                    <h3 className="font-semibold text-black">{point.title}</h3>
+                    <p className="text-sm text-gray-600">{point.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-          <motion.div className="relative" style={{ y, opacity }}>
-            <div className="w-full h-[500px] bg-white/10 backdrop-blur-lg rounded-lg overflow-hidden">
+          <motion.div className="relative mt-8 lg:mt-0" style={{ y, opacity }}>
+            <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px] bg-[#2980b9] rounded-lg overflow-hidden">
               <Image
                 src="/bgless-logo.png"
+                alt="Event Link"
                 layout="fill"
                 objectFit="contain"
-                alt="LOGO"
+                quality={100}
               />
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          className="mt-16 sm:mt-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl sm:text-2xl font-semibold text-center mb-6 sm:mb-8 text-black">
+            What Our Users Say
+          </h3>
+          <div className="flex overflow-x-hidden">
+            <motion.div
+              className="flex"
+              animate={{ x: [0, -100 * testimonials.length + 100] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <Card
+                  key={index}
+                  className="w-64 sm:w-80 mx-2 sm:mx-4 bg-white border-[#2980b9] flex-shrink-0"
+                >
+                  <div className="p-4 sm:p-6">
+                    <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
+                      "{testimonial.quote}"
+                    </p>
+                    <p className="font-semibold text-black">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-xs sm:text-sm text-gray-600">
+                      {testimonial.role}
+                    </p>
+                  </div>
+                </Card>
+              ))}
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-16 sm:mt-20 text-center"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-black">
+            Ready to simplify your event management?
+          </h3>
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <Button
+              variant="default"
+              size="lg"
+              className="bg-[#2980b9] hover:bg-[#3498db] text-white w-full sm:w-auto"
+              onClick={() =>
+                document
+                  .getElementById("features")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Discover Features
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-[#2980b9] text-[#2980b9] hover:bg-[#2980b9] hover:text-white w-full sm:w-auto"
+              onClick={() =>
+                document
+                  .getElementById("demo")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              View the Demo
+            </Button>{" "}
+          </div>
+        </motion.div>
       </div>
 
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-3 h-3 bg-white/20 backdrop-blur-lg rounded-full opacity-20"
+            className="absolute w-2 h-2 sm:w-3 sm:h-3 bg-[#2980b9] rounded-full opacity-20"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,

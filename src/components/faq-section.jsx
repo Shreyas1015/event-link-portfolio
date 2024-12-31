@@ -100,8 +100,12 @@ export function FaqSection() {
   }, [searchTerm, activeCategory]);
 
   return (
-    <section ref={ref} id="faq" className="py-80 px-20 ">
-      <div className="container mx-auto px-4 ">
+    <section
+      ref={ref}
+      id="faq"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-black to-[#2980b9]"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           animate={controls}
@@ -110,27 +114,27 @@ export function FaqSection() {
             hidden: { opacity: 0, y: 50 },
           }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4 text-white">
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-4 sm:mb-6 md:mb-8">
             Find quick answers to common questions
           </p>
-          <div className="relative max-w-2xl mx-auto">
+          <div className="relative max-w-xl sm:max-w-2xl mx-auto">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <Input
               type="text"
               placeholder="Search FAQs"
-              className="pl-10 pr-4 py-2 w-full rounded-full border-2 border-gray-700 bg-gray-800 text-white placeholder-gray-400 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              className="pl-10 pr-4 py-2 w-full rounded-full border-2 border-[#2980b9] bg-white text-black placeholder-gray-500 focus:border-[#3498db] focus:ring focus:ring-[#3498db] focus:ring-opacity-50"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
           <motion.div
             initial="hidden"
             animate={controls}
@@ -141,7 +145,7 @@ export function FaqSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="md:col-span-1"
           >
-            <h3 className="text-xl font-semibold mb-4 text-white">
+            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white">
               Categories
             </h3>
             <ul className="space-y-2">
@@ -149,10 +153,10 @@ export function FaqSection() {
                 <li key={category.name}>
                   <Button
                     variant="ghost"
-                    className={`w-full justify-start ${
+                    className={`w-full justify-start text-sm sm:text-base ${
                       activeCategory === category.name
-                        ? "bg-blue-900 text-blue-200"
-                        : "text-gray-300 hover:text-white"
+                        ? "bg-[#2980b9] text-white"
+                        : "text-white hover:bg-[#2980b9]"
                     }`}
                     onClick={() => setActiveCategory(category.name)}
                   >
@@ -177,23 +181,29 @@ export function FaqSection() {
                 key={category.name}
                 className={activeCategory === category.name ? "" : "hidden"}
               >
-                <h3 className="text-2xl font-semibold mb-4 text-white">
+                <h3 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-white">
                   {category.name}
                 </h3>
-                <Accordion type="single" collapsible className="space-y-4">
+                <Accordion
+                  type="single"
+                  collapsible
+                  className="space-y-3 sm:space-y-4"
+                >
                   {category.questions.map((faq, index) => (
                     <AccordionItem
                       key={index}
                       value={`item-${index}`}
-                      className="border-gray-700"
+                      className="border-[#2980b9]"
                     >
                       <AccordionTrigger className="text-left hover:no-underline">
-                        <span className="text-lg font-medium text-gray-200">
+                        <span className="text-base sm:text-lg font-medium text-white">
                           {faq.question}
                         </span>
                       </AccordionTrigger>
                       <AccordionContent>
-                        <p className="text-gray-300">{faq.answer}</p>
+                        <p className="text-sm sm:text-base text-white">
+                          {faq.answer}
+                        </p>
                       </AccordionContent>
                     </AccordionItem>
                   ))}
@@ -211,34 +221,34 @@ export function FaqSection() {
             hidden: { opacity: 0, y: 50 },
           }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center"
         >
-          <h3 className="text-2xl font-semibold mb-4 text-white">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4 text-white">
             Still Need Help?
           </h3>
-          <p className="text-gray-300 mb-6">
+          <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6">
             Our support team is here to assist you.
           </p>
-          <div className="flex justify-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
             <Button
               variant="outline"
-              className="flex items-center bg-transparent border-white text-white hover:bg-gray-800 hover:text-white"
+              className="flex items-center justify-center bg-transparent border-[#2980b9] text-white hover:bg-[#2980b9] text-sm sm:text-base"
             >
-              <MessageCircle className="mr-2" size={20} />
+              <MessageCircle className="mr-2" size={18} />
               Chat
             </Button>
             <Button
               variant="outline"
-              className="flex items-center bg-transparent border-white text-white hover:bg-gray-800 hover:text-white"
+              className="flex items-center justify-center bg-transparent border-[#2980b9] text-white hover:bg-[#2980b9] text-sm sm:text-base"
             >
-              <Mail className="mr-2" size={20} />
+              <Mail className="mr-2" size={18} />
               Email
             </Button>
             <Button
               variant="outline"
-              className="flex items-center bg-transparent border-white text-white hover:bg-gray-800 hover:text-white"
+              className="flex items-center justify-center bg-transparent border-[#2980b9] text-white hover:bg-[#2980b9] text-sm sm:text-base"
             >
-              <Phone className="mr-2" size={20} />
+              <Phone className="mr-2" size={18} />
               Call
             </Button>
           </div>
