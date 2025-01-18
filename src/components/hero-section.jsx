@@ -102,6 +102,14 @@ export function HeroSection() {
           initial="hidden"
           animate={controls}
         >
+
+          {/* <ul>
+            {data.map((user, index) => (
+              <li key={index}>
+                <h2 >{user.name}</h2>
+              </li>
+            ))}
+          </ul> */}
           <motion.h1
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white"

@@ -15,15 +15,15 @@ import {
 } from "lucide-react";
 
 export function Footer() {
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  // const [showBackToTop, setShowBackToTop] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => setShowBackToTop(window.scrollY > 300);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => setShowBackToTop(window.scrollY > 300);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  // const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
@@ -124,7 +124,7 @@ export function Footer() {
       </div>
 
       {/* Back-to-Top Button */}
-      {showBackToTop && (
+      {/* {showBackToTop && (
         <motion.button
           className="fixed bottom-4 right-4 bg-[#2980b9] p-2 rounded-full shadow-lg text-white"
           onClick={scrollToTop}
@@ -134,7 +134,7 @@ export function Footer() {
         >
           <ChevronUp size={24} />
         </motion.button>
-      )}
+      )} */}
     </footer>
   );
 }
